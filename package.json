@@ -1,0 +1,22 @@
+{
+  "name": "spotify-covers",
+  "version": "0.0.0",
+  "repository": "git@nikia.github.com:She-Codes/spotify-covers.git",
+  "author": "Nikia Shaw <n.y.shaw@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "netlify": "netlify dev"
+  },
+  "dependencies": {
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "netlify-cli": "^3.39.0",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.3.8"
+  }
+}
