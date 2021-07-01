@@ -8,11 +8,14 @@ const responseType = 'code';
 const redirectURI = 'http://localhost:8888';
 const app = express();
 
-app.use(express.json());
+//app.use(express.json());
 
 app.get('/login', (req, res) => {
   res.send('Hello World!');
 });
+
+module.exports = app;
+module.exports.handler = serverless(app);
 
 // exports.handler = async(e) => {
 //   const path = `${authEndpoint}?client_id=${CLIENT_ID}&response_type=${responseType}&redirect_uri=${redirectURI}`;

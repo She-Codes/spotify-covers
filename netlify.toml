@@ -7,9 +7,9 @@ publish = "dist"
 ## Uncomment to use this redirect for Single Page Applications like create-react-app.
 ## Not needed for static site generators.
 [[redirects]]
-from = "/login/*"
+from = "/login"
 status = 200
-to = "/.netlify/functions/:splat"
+to = "/.netlify/functions/login"
 
 ## (optional) Settings for Netlify Dev
 ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
