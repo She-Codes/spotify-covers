@@ -11,6 +11,7 @@
     "netlify": "netlify dev"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "serverless-http": "^2.7.0",

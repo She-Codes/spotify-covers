@@ -11,6 +11,11 @@ from = "/login"
 status = 200
 to = "/.netlify/functions/login"
 
+[[redirects]]
+from = "/login/auth-callback"
+status = 200
+to = "/.netlify/functions/auth-callback"
+
 ## (optional) Settings for Netlify Dev
 ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
 [dev]
