@@ -16,6 +16,11 @@ from = "/login/auth-callback"
 status = 200
 to = "/.netlify/functions/auth-callback"
 
+[[redirects]]
+from = "/login/refresh-token"
+status = 200
+to = "/.netlify/functions/get-fresh-token"
+
 ## (optional) Settings for Netlify Dev
 ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
 [dev]
