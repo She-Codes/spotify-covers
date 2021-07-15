@@ -1,6 +1,14 @@
 <template>
-  <button v-if="!loggedIn">Log In</button>
-  <p v-else>Logged In!</p>
+  <div v-if="!loggedIn">
+    <button>Log In</button>
+  </div>
+  <div v-else>
+    <p>Logged In!</p>
+    <div id="newReleases">
+      <button v-on:click="getNewReleases">Get New Releases</button>
+    </div>
+    <div id="myCovers"></div>
+  </div>
 </template>
 
 <script>
@@ -27,6 +35,11 @@
           this.loggedIn = false;
         }
       }
+
+      // if logged in show either new releases or saved myCovers
+      // if you have saved covers show the covers tab
+      // if you have no covers show the new releases tab
+      // able to cache new releases?
     },
     methods: {
       /**
@@ -34,18 +47,27 @@
        * If not, set this.accessToken to undefined and throw an error.
       */
       async getNewAccessToken () {
-        const vm = this;
-
         try {
           const { data } = await axios.post('/login/refresh-token', {
-            refreshToken: vm.refreshToken
+            refreshToken: this.refreshToken
           });
           console.log(data);
-          vm.accessToken = data.access_token;
+          this.accessToken = data.access_token;
         } catch (error) {
-          vm.accessToken = undefined;
+          this.accessToken = undefined;
           console.error(error);
           throw error;
+        }
+      },
+
+      async getNewReleases () {
+        try {
+          const { data } = await axios.get('https://api.spotify.com/v1/browse/new-releases', {
+            headers: {'Authorization': `Bearer ${this.accessToken}`}
+          });
+          console.log(data);
+        } catch (error) {
+          
         }
       }
     }
