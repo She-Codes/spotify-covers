@@ -126,6 +126,8 @@
           throw error;
         }
       }
+
+      // TODO: make a specific isLoggedIn function?
     }
   }
 </script>
