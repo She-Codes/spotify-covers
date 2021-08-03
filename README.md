@@ -39,3 +39,4 @@ In hindsight, I would've run the Vite command first to create my project directo
 - Could now successfully run `yarn netlify` to run the Netlify and dev servers
 - Added `node-fetch` for Netlify function
 - Created `functions/spotify-auth.js`
+- Added `vuefire` and `firebase` Vuefire should make it easier to work with firebase

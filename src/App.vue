@@ -13,13 +13,14 @@
 
 <script>
   import axios from "axios";
+  import { db } from "../src/firebase";
   export default {
     data () {
       return {
         loggedIn: false,
         accessToken: undefined,
         refreshToken: undefined,
-        user: undefined
+        user: undefined,
       }
     },
 
@@ -57,15 +58,31 @@
           await this.getUser();
           this.loggedIn = true;
           // if user already saved in firestore
+          const firebaseUserRef = db.collection('users').doc(this.user);
+          try {
+            const doc = await firebaseUserRef.get();
+            if (doc.exists) {
+              console.log("Document data:", doc.data());
+            } else {
+              console.log("No such document!");
+            }
+          } catch (error) {
+            console.log("Error getting document:", error);
+          }
+          
             // get albums
           // if not saved 
             // save user in firestore
         } catch (error) {
           try {
+            // if getting the user failed, see if it's because you were
+            // logged in and the token expired...
             await this.getNewAccessToken();
             await this.getUser();
+            this.loggedIn = true;
             // Additional error handling here for if getUser doesn't work or 
             // will that trigger catch block?
+            // should also get albums from firestore here or add user
           } catch (error) {
             this.loggedIn = false;
             // is it right that if either action fails, loggedIn == false?
